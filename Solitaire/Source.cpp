@@ -37,6 +37,11 @@ int main()
 		int condition = 0;
 		while (condition != 99) {
 			condition = s.user_input();
+			if (condition == 42)
+			{
+				cout << endl << "///Congratulations! You win!" << endl;
+					return 1;
+			}
 			if (condition == 97)
 				cout << endl << "///ERROR: Cannot swap stacks///" << endl << endl;
 			else if (condition == 96)

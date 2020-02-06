@@ -71,7 +71,7 @@ public:
 	// fill columns with cards
 	void fill_columns() {
 		// Loop through decksize
-		for (int i = 0; i < deck.size(); i++)
+		for (int i = 0; i < 8; i++)
 		{
 			// gradually loops more depending on the col num
 			// col1
@@ -124,8 +124,10 @@ public:
 				col7.push_back(c);
 				deck.pop_back();
 			}
+		}
 
-			// send rest to pile
+		while (deck.size() != 0)
+		{
 			Card c = deck[deck.size() - 1];
 			pile.push_back(c);
 			deck.pop_back();
@@ -358,6 +360,11 @@ public:
 			}
 		}
 
+		// If the foundations have all 13 cards of that suit, game is over
+		if (found_clubs.size() == 13 && found_diamonds.size() == 13 && found_hearts.size() == 13 && found_spades.size() == 13)
+		{
+			return 42;
+		}
 
 		// returns column number
 		return col;
@@ -576,7 +583,7 @@ public:
 				else
 					found_diamonds.push_back(being_moved);
 			}
-			else 
+			else
 				std::cout << std::endl << "///ERROR: Card being switched was not 1 less than card at foundation" << std::endl << std::endl;
 		}
 	}
